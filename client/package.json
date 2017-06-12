@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "autoprefixer": "^7.1.1",
+    "bluebird": "^3.5.0",
+    "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^3.0.0-beta.7",
@@ -19,6 +21,8 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "@types/bluebird-global": "^3.5.2",
+    "@types/lodash": "^4.14.65",
     "@types/react": "^15.0.27",
     "@types/react-dom": "^15.5.0",
     "@types/react-hot-loader": "^3.0.1",
