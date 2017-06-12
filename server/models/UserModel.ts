@@ -1,4 +1,4 @@
-import {genSalt, hash} from 'bcryptjs';
+import {compare, genSalt, hash} from 'bcryptjs';
 import {Document, DocumentQuery, Model, model, Schema} from 'mongoose';
 
 export interface IUser {
@@ -6,7 +6,9 @@ export interface IUser {
     name: string;
 }
 
-export interface IUserModel extends IUser, Document {}
+export interface IUserModel extends IUser, Document {
+    checkPassword: (password: string, callback: Function) => void;
+}
 
 export interface IUserModelStatic extends Model<IUserModel> {
     findByEmail(email: string): DocumentQuery<IUserModel, IUserModel>;
@@ -51,6 +53,15 @@ userSchema.pre('save', function(next) {
 /* Statics */
 userSchema.statics.findByEmail = function(email: string): DocumentQuery<IUserModel, IUserModel> {
     return this.findOne({ email });
+};
+
+/* Methods */
+userSchema.methods.checkPassword = function(password: string, callback: Function) {
+    compare(password, this.password, (err: any, isMatch: boolean) => {
+        if (err) { return callback(err, null); }
+
+        callback(null, isMatch);
+    });
 };
 
 const User = model<IUserModel, IUserModelStatic>('User', userSchema);

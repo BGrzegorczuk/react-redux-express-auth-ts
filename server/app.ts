@@ -2,8 +2,9 @@ import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
-import authRoutes from './routes/auth';
 import * as passport from 'passport';
+import authRoutes from './routes/auth';
+
 
 const app = express();
 
@@ -37,9 +38,9 @@ app.use('/', (req: express.Request, res: express.Response) => {
 
 // DEVELOPMENT error handler - prints stacktrace
 if (app.get('env') === 'development') {
-    app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    app.use((err: any, req: express.Request, res: express.Response) => {
         res.status(err.status || 500);
-        res.render('error', {
+        res.send({
             message: err.message,
             error: err
         });
@@ -47,9 +48,9 @@ if (app.get('env') === 'development') {
 }
 
 // PRODUCTION error handler - no stacktrace leaks to user
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((err: any, req: express.Request, res: express.Response) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.send({
         message: err.message,
         error: {}
     });

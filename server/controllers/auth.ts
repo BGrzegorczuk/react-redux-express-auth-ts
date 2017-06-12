@@ -11,7 +11,7 @@ const createToken = (user: IUserModel) => {
 
 // TODO: Consider errors format - return more human readable errors from forms in general
 // TODO: separate common responses interfaces for both server & client
-export function signup(req: express.Request, res: express.Response, next: express.NextFunction) {
+export function signup(req: express.Request, res: express.Response) {
     const { email, password } = req.body;
 
     // see if user with given email already exists in DB
@@ -36,4 +36,11 @@ export function signup(req: express.Request, res: express.Response, next: expres
             }
         })
         .catch( (err: any) => console.log('err', err) );
+}
+
+
+export function login(req: express.Request, res: express.Response) {
+    const { user } = req;
+
+    res.send({ token: createToken(user) });
 }
