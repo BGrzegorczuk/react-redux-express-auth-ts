@@ -1,3 +1,4 @@
+import {genSalt, hash} from 'bcryptjs';
 import {Document, DocumentQuery, Model, model, Schema} from 'mongoose';
 
 export interface IUser {
@@ -28,6 +29,22 @@ export const userSchema: Schema = new Schema({
         type: String,
         required: true
     }
+});
+
+/* Hooks */
+userSchema.pre('save', function(next) {
+    const user = this;
+
+    genSalt(10, (err: any, salt: string) => {
+        if (err) { return next(err); }
+
+        hash(user.password, salt, (err: any, hash: string) => {
+            if (err) { return next(err); }
+
+            user.password = hash;
+            next();
+        });
+    });
 });
 
 
