@@ -5,9 +5,9 @@
   "license": "ISC",
   "scripts": {
     "cleanup": "rimraf build && npm prune",
+    "develop": "nodemon --exec 'ts-node' bin/www.ts",
     "build": "npm run cleanup && tsc",
-    "develop": "tsc --watch",
-    "start": "node build/bin/www.js"
+    "start": "npm run build && NODE_ENV=production node build/bin/www.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -32,6 +32,8 @@
     "@types/node": "^7.0.29",
     "@types/q": "^1.0.0",
     "@types/serve-favicon": "^2.2.28",
-    "@types/serve-static": "^1.7.31"
+    "@types/serve-static": "^1.7.31",
+    "nodemon": "^1.11.0",
+    "ts-node": "^3.0.6"
   }
 }
