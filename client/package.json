@@ -4,7 +4,7 @@
   "author": "Bartosz Grzegorczuk",
   "license": "ISC",
   "scripts": {
-    "cleanup": "rimraf dist && npm prune",
+    "cleanup": "rimraf ../build && npm prune",
     "build": "npm run cleanup && webpack --config webpack.prod.js -p",
     "develop": "webpack-dev-server --config webpack.dev.js"
   },
