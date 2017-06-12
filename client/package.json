@@ -1,0 +1,44 @@
+{
+  "name": "react-redux-express-auth-ts-client",
+  "version": "0.0.1",
+  "author": "Bartosz Grzegorczuk",
+  "license": "ISC",
+  "scripts": {
+    "cleanup": "rimraf dist && npm prune",
+    "build": "npm run cleanup && webpack --config webpack.prod.js -p",
+    "develop": "webpack-dev-server --config webpack.dev.js"
+  },
+  "dependencies": {
+    "@types/react": "^15.0.27",
+    "@types/react-dom": "^15.5.0",
+    "autoprefixer": "^7.1.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "^3.0.0-beta.7"
+  },
+  "devDependencies": {
+    "@types/react-hot-loader": "^3.0.1",
+    "@types/webpack-env": "^1.13.0",
+    "chunk-manifest-webpack-plugin": "^1.1.0",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.3.1",
+    "inline-manifest-webpack-plugin": "^3.0.1",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
+    "progress-bar-webpack-plugin": "^1.9.3",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.5",
+    "source-map-loader": "^0.2.1",
+    "ts-loader": "^2.1.0",
+    "typescript": "^2.3.4",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.6.1",
+    "webpack-chunk-hash": "^0.4.0",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.0"
+  }
+}

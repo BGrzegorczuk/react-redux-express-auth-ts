@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "../build/",
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true
+  }
+}
