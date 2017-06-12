@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "../build/",
+    "typeRoots": ["./node_modules/@types", "./typings/**/*"],
     "module": "es6",
     "target": "es5",
     "jsx": "react",

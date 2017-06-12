@@ -15,14 +15,14 @@
     "react-hot-loader": "^3.0.0-beta.7",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "@types/react": "^15.0.27",
     "@types/react-dom": "^15.5.0",
     "@types/react-hot-loader": "^3.0.1",
     "@types/react-router-dom": "^4.0.4",
-    "@types/redux": "^3.6.0",
     "@types/webpack-env": "^1.13.0",
     "chunk-manifest-webpack-plugin": "^1.1.0",
     "css-loader": "^0.28.4",
