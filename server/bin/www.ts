@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-
 /**
  * SERVER
  */
-
 import {app} from '../app';
 import {Promise} from 'q';
 import * as debugModule from 'debug';
