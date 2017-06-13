@@ -60,18 +60,18 @@ export function apiGET(url: string, params?: any) {
     return request('GET', urlWithParams);
 };
 
-export function apiPOST (url: string, data?: IDictionary<any>, opts?: RequestOptions) {
+export function apiPOST (url: string, data?: IDictionary<any>, opts?: RequestOptions): Promise<any> {
     return request('POST', url, data);
 };
 
-export function apiPUT (url: string, data?: IDictionary<any>, opts?: RequestOptions) {
+export function apiPUT (url: string, data?: IDictionary<any>, opts?: RequestOptions): Promise<any> {
     return request('PUT', url, data, opts);
 };
 
-export function apiPATCH (url: string, data?: IDictionary<any>, opts?: RequestOptions) {
+export function apiPATCH (url: string, data?: IDictionary<any>, opts?: RequestOptions): Promise<any> {
     return request('PATCH', url, data, opts);
 };
 
-export function apiDELETE (url: string) {
+export function apiDELETE (url: string): Promise<any> {
     return request('DELETE', url);
 };
