@@ -22,7 +22,6 @@ class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
 
     // TODO: typings
     private onInputChange = (e: React.FormEvent<any>) => {
-        console.log(e);
         const target = (e as any).target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;

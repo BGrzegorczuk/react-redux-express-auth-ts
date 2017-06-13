@@ -7,9 +7,8 @@ import VideoDetails from '../components/VideoDetail';
 import VideoList from '../components/VideoList';
 import {Loader} from '../../common/components/Loader';
 import SearchBar from '../components/SearchBar';
+import ytAPI, {APIKey} from '../utils/yt_api_search';
 
-
-const APIKey = "AIzaSyAFXU0ZOBUe9slg1yCtJFSWP-oXJweY5CY";
 
 interface IVideoListViewProps extends IRouteComponentProps<any> {}
 
@@ -31,20 +30,24 @@ class VideoListView extends React.Component<IVideoListViewProps, IVideoListViewS
             selectedVideo: null
         };
 
-        this.queryVideos(this.initialSearchTerm, (videos: YTSearch.IVideoItem[]) => {
-            this.updateVideos(videos);
-            this.setSelectedVideo(videos[0]);
-        });
+        // TODO: typings for response
+        this.queryVideos(this.initialSearchTerm)
+            .then((res: any) => {
+                const [ currentVideo, ...restVideos ] = res.items;
+                this.setSelectedVideo(currentVideo);
+                this.updateVideos(restVideos);
+            });
     }
 
     /**
      * Helpers
      */
 
-    private queryVideos = (term: string, callbk: (videos: YTSearch.IVideoItem[]) => void | undefined ) => {
-        return YTSearch({ key: APIKey, term: term }, (videos: YTSearch.IVideoItem[]) => {
-            callbk && callbk(videos);
-        });
+    private queryVideos = (term: string): Promise<Response> => {
+        const params = { key: APIKey, q: term, maxResults: 6, type: 'video' };
+
+        return ytAPI(params)
+            .then((res: Response) => res.json());
     };
 
     private setSelectedVideo = (video: YTSearch.IVideoItem) => {
@@ -63,10 +66,15 @@ class VideoListView extends React.Component<IVideoListViewProps, IVideoListViewS
         this.setSelectedVideo(video);
     };
 
+    // TODO: typings for response
     private onVideoSearch = debounce((term: string) => {
-        this.queryVideos(term, (videos: YTSearch.IVideoItem[]) => {
-            this.updateVideos(videos);
-        });
+        console.log("term", term);
+        this.queryVideos(term)
+            .then((res: any) => {
+                const [ currentVideo, ...restVideos ] = res.items;
+                console.log(restVideos);
+                this.updateVideos(restVideos);
+            });
     }, 300);
 
     private renderContent(): JSX.Element {
