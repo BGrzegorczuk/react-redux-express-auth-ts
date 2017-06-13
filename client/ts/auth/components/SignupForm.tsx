@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
+import {FormErrors, FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
 import {Alert, Button, Form} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import Input from '../../common/forms/fields/Input';
+import * as validators from '../../common/forms/validators';
 
 
 export interface IFormData {
@@ -18,9 +19,21 @@ interface ISignupFormProps extends IFormProps {
     authError: string | null;
 }
 
+function validate(formData: IFormData): FormErrors<IFormData> {
+    const { email, password, passwordConfirm } = formData;
+    let errors: IFormData = {};
+
+    errors.email = validators.email(email);
+    errors.password = validators.required(password);
+    errors.passwordConfirm = validators.equal(password, passwordConfirm, 'Passwords are not identical');
+
+    return errors;
+}
+
 
 @reduxForm<IFormData, ISignupFormProps, {}>({
-    form: 'SignupForm'
+    form: 'SignupForm',
+    validate
 })
 class SignupFormC extends React.Component<ISignupFormProps, {}> {
 

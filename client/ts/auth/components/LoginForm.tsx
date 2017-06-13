@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
+import {FormErrors, FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
 import {Alert, Button, Form} from 'react-bootstrap';
 import Input from '../../common/forms/fields/Input';
+import * as validators from '../../common/forms/validators';
 
 
 export interface IFormData {
@@ -17,10 +18,21 @@ interface ILoginFormProps extends IFormProps {
 }
 
 
-@reduxForm<IFormData, ILoginFormProps, {}>({
-    form: 'LoginForm'
-})
+function validate(formData: IFormData): FormErrors<IFormData> {
+    const { email, password } = formData;
+    let errors: IFormData = {};
 
+    errors.email = validators.email(email);
+    errors.password = validators.required(password);
+
+    return errors;
+}
+
+
+@reduxForm<IFormData, ILoginFormProps, {}>({
+    form: 'LoginForm',
+    validate
+})
 class LoginForm extends React.Component<ILoginFormProps, {}> {
 
     private renderAuthError(msg: string): JSX.Element {
