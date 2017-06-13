@@ -258,3 +258,48 @@ $xxxl: 3rem !default;
 // Other
 .nowrap { white-space: nowrap; }
 .truncate { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+
+// Flexbox
+.fd-row { flex-direction: row; }
+.fd-col { flex-direction: column; }
+
+.fw-wrap { flex-wrap: wrap; }
+.fw-nowrap { flex-wrap: nowrap; }
+
+.fjc-start { justify-content: flex-start; }
+.fjc-center { justify-content: center; }
+.fjc-end { justify-content: flex-end; }
+.fjc-sb { justify-content: space-between; }
+.fjc-sa { justify-content: space-around; }
+
+.fac-start { align-content: flex-start; }
+.fac-center { align-content: center; }
+.fac-end { align-content: flex-end; }
+.fac-stretch { align-content: stretch; }
+.fac-sb { align-content: space-between; }
+.fac-sa { align-content: space-around; }
+
+.fai-start { align-items: flex-start; }
+.fai-center { align-items: center; }
+.fai-end { align-items: flex-end; }
+.fai-stretch { align-items: stretch; }
+
+.fas-auto { align-self: auto; }
+.fas-start { align-self: flex-start; }
+.fas-center { align-self: center; }
+.fas-end { align-self: flex-end; }
+.fas-stretch { align-self: stretch; }
+
+.fg-0 { flex-grow: 0; }
+.fg-1 { flex-grow: 1; }
+
+.fs-0 { flex-shrink: 0; }
+.fs-1 { flex-shrink: 1; }
+
+.fb-0 { flex-basis: 0; }
+.fb-a { flex-basis: auto; }
+
+.fo-0 { order: 0; }
+.fo-1 { order: 1; }
+.fo-2 { order: 2; }
