@@ -31,10 +31,12 @@ class AppC extends React.Component<IAppProps, {}> {
         return (
             <Provider store={this.props.store}>
                 <Router>
-                    <main className="app">
+                    <div id="app">
                         <Header authenticated={this.props.isUserAuthorized}/>
-                        { this.renderContent() }
-                    </main>
+                        <main id="main">
+                            { this.renderContent() }
+                        </main>
+                    </div>
                 </Router>
             </Provider>
         );

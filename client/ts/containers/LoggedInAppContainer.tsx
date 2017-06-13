@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import NotFoundView from './NotFoundView';
-import IndexView from '../common/views/IndexView';
 import LogoutView from '../auth/views/LogoutView';
+import IndexView from './IndexView';
 
 
 export interface ILoggedInAppContainerProps {}
