@@ -18,6 +18,7 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
+    "redux-form": "^6.8.0",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
@@ -27,6 +28,7 @@
     "@types/react-dom": "^15.5.0",
     "@types/react-hot-loader": "^3.0.1",
     "@types/react-router-dom": "^4.0.4",
+    "@types/redux-form": "^6.6.2",
     "@types/webpack-env": "^1.13.0",
     "chunk-manifest-webpack-plugin": "^1.1.0",
     "css-loader": "^0.28.4",

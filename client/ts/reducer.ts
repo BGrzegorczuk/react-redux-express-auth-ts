@@ -1,7 +1,12 @@
 import {combineReducers} from 'redux';
+import authReducer, {IAuthStore} from './auth/reducer';
+
+export interface IStore {
+    auth: IAuthStore
+}
 
 const rootReducer = combineReducers({
-    state: (state = {}) => state
+    auth: authReducer
 });
 
 export default rootReducer;
