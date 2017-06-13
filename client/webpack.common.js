@@ -48,6 +48,11 @@ const rules = {
         })
     },
 
+    fonts: {
+        test: /\.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
+    },
+
     images: {
         test: /\.(gif|png|jpe?g|svg)$/i,
         loaders: [
@@ -125,6 +130,8 @@ module.exports = {
     entry: {
         app: [
             'react-hot-loader/patch',
+            path.resolve('./sass/critical.scss'),
+            path.resolve('./sass/styles.scss'),
             path.resolve('./ts/index.tsx')
         ]
     },
@@ -149,7 +156,8 @@ module.exports = {
         rules: [
             rules.typescript,
             rules.sass,
-            rules.images
+            rules.fonts,
+            rules.images,
         ]
     },
     resolve: {

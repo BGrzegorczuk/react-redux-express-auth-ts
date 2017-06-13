@@ -11,6 +11,7 @@
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "bluebird": "^3.5.0",
+    "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
@@ -32,6 +33,7 @@
     "@types/react-router-dom": "^4.0.4",
     "@types/redux-form": "^6.6.2",
     "@types/webpack-env": "^1.13.0",
+    "bootstrap-sass": "^3.3.7",
     "chunk-manifest-webpack-plugin": "^1.1.0",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
@@ -46,6 +48,7 @@
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
     "source-map-loader": "^0.2.1",
+    "style-loader": "^0.18.2",
     "ts-loader": "^2.1.0",
     "typescript": "^2.3.4",
     "url-loader": "^0.5.8",
