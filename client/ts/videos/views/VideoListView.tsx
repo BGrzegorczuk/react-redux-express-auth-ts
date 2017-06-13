@@ -6,6 +6,7 @@ import {RouteComponentProps as IRouteComponentProps} from 'react-router-dom';
 import VideoDetails from '../components/VideoDetail';
 import VideoList from '../components/VideoList';
 import {Loader} from '../../common/components/Loader';
+import SearchBar from '../components/SearchBar';
 
 
 const APIKey = "AIzaSyAFXU0ZOBUe9slg1yCtJFSWP-oXJweY5CY";
@@ -71,14 +72,15 @@ class VideoListView extends React.Component<IVideoListViewProps, IVideoListViewS
     private renderContent(): JSX.Element {
         return (
             <Grid className="pv-xxxl h100">
+                <SearchBar onVideoSearch={this.onVideoSearch} />
+
                 <Row>
                     <Col md={8}>
-                        <VideoDetails className="col-md-8" video={this.state.selectedVideo}/>
+                        <VideoDetails video={this.state.selectedVideo}/>
                     </Col>
 
                     <Col md={4}>
                         <VideoList
-                            className="col-md-4"
                             videos={this.state.videos}
                             onVideoSelect={this.onVideoSelect}
                         />

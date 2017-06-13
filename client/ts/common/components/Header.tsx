@@ -45,7 +45,7 @@ class Header extends React.Component<IHeaderProps, {}> {
 
     public render(): JSX.Element {
         return (
-            <Navbar className="m-0 fg-0 fs-0 fb-a">
+            <Navbar inverse className="m-0 fg-0 fs-0 fb-a">
                 <Navbar.Header>
                     <Navbar.Brand>
                         <LinkContainer to="/" exact activeClassName="">

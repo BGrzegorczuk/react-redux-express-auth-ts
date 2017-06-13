@@ -15,7 +15,7 @@ const VideoItem = (props: IVideoItemProps) => {
     };
 
     return (
-        <ListGroupItem key={videoData.id.videoId} onClick={onClick}>
+        <ListGroupItem className="pv-sm mb-sm" bsStyle="info" key={videoData.id.videoId} onClick={onClick}>
             <Media>
                 <Media.Left>
                     <Image src={videoData.snippet.thumbnails.default.url}/>
