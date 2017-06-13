@@ -5,6 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import LoggedInAppContainer from './LoggedInAppContainer';
 import LoggedOutAppContainer from './LoggedOutAppContainers';
 import {IStore} from '../reducer';
+import Header from '../common/components/Header';
 
 
 interface IStateProps {
@@ -31,6 +32,7 @@ class AppC extends React.Component<IAppProps, {}> {
             <Provider store={this.props.store}>
                 <Router>
                     <main className="app">
+                        <Header authenticated={this.props.isUserAuthorized}/>
                         { this.renderContent() }
                     </main>
                 </Router>
