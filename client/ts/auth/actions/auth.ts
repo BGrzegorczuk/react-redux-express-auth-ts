@@ -10,12 +10,14 @@ import {createRequestActionTypes} from '../../common/helpers/actions';
 /* TYPES */
 
 export const AUTHENTICATE_USER = 'auth/AUTHENTICATE_USER';
+export const UNAUTHENTICATE_USER = 'auth/UNAUTHENTICATE_USER';
 export const RESET_AUTH_FORM = 'auth/RESET_AUTH_FORM';
 export const authFormSubmitActionTypes = createRequestActionTypes('auth/FORM_SUBMIT');
 
 /* ACTIONS */
 
 export const authenticateUser = (): IAction => ({ type: AUTHENTICATE_USER });
+export const unauthenticateUser = (): IAction => ({ type: UNAUTHENTICATE_USER });
 export const resetAuthForm = (): IAction => ({ type: RESET_AUTH_FORM });
 export const authRequestStart: IAction = { type: authFormSubmitActionTypes.start };
 export const authRequestSuccess: IAction = { type: authFormSubmitActionTypes.success };
@@ -45,7 +47,7 @@ export const loginUser = ({ email, password }: IAuthLoginCreds, onSuccess?: Func
 
 export const logoutUser = (): IAction => {
     localStorage.removeItem(AUTH_TOKEN_LS_KEY);
-    return resetAuthForm();
+    return unauthenticateUser();
 };
 
 

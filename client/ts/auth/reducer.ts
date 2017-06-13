@@ -1,6 +1,6 @@
 import {IAction} from '../common/interfaces/action';
 import {AUTH_TOKEN_LS_KEY} from '../consts/auth';
-import {AUTHENTICATE_USER, authFormSubmitActionTypes, RESET_AUTH_FORM} from './actions/auth';
+import {AUTHENTICATE_USER, authFormSubmitActionTypes, RESET_AUTH_FORM, UNAUTHENTICATE_USER} from './actions/auth';
 
 
 export interface IAuthStore {
@@ -20,6 +20,8 @@ const authReducer  = (state: IAuthStore = initialState, action: IAction): IAuthS
     switch (action.type) {
         case AUTHENTICATE_USER:
             return { ...state, authenticated: true };
+        case UNAUTHENTICATE_USER:
+            return { ...state, authenticated: false };
         case RESET_AUTH_FORM:
             return { ...state, authError: null, loading: false };
 
