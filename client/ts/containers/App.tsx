@@ -31,9 +31,9 @@ class AppC extends React.Component<IAppProps, {}> {
         return (
             <Provider store={this.props.store}>
                 <Router>
-                    <div id="app">
+                    <div id="app" className="df fd-col vh100 vw100">
                         <Header authenticated={this.props.isUserAuthorized}/>
-                        <main id="main">
+                        <main id="main" className="df fg-1 fs-1 fb-a overflow-y-a">
                             { this.renderContent() }
                         </main>
                     </div>
