@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {RouteComponentProps as IRouteComponentProps} from 'react-router-dom';
 import {IAuthLoginCreds} from '../interfaces/auth';
-import {clearAuthError, loginUser} from '../actions/auth';
+import {loginUser, resetAuthForm} from '../actions/auth';
 import {bindActionCreators, Dispatch as IDispatch} from 'redux';
 import {IStore} from '../../reducer';
 import {connect} from 'react-redux';
@@ -9,13 +9,13 @@ import LoginForm, {IFormData} from '../components/LoginForm';
 
 
 interface IStateProps {
-    authenticated: boolean;
     authError: string | null;
+    loading: boolean;
 }
 
 interface IActionProps {
     loginUser: typeof loginUser;
-    clearAuthError: typeof clearAuthError;
+    resetAuthForm: typeof resetAuthForm;
 }
 
 interface IOwnProps {}
@@ -24,10 +24,12 @@ interface ILoginViewProps extends IStateProps, IActionProps, IOwnProps, IRouteCo
     dispatch: IDispatch<IStore>;
 }
 
+// NOTE: logic is very similar to SignupView, I think but it's better to
+// keep them separated as business logic can differ in near future
 class LoginViewC extends React.Component<ILoginViewProps, {}> {
 
     public componentWillUnmount(): void {
-        this.props.clearAuthError();
+        this.props.resetAuthForm();
     }
 
     private onSubmit = (formData: IFormData): void => {
@@ -41,7 +43,11 @@ class LoginViewC extends React.Component<ILoginViewProps, {}> {
     public render(): JSX.Element {
         return (
             <div className="auth-form-holder p-xl pt-xxxl">
-                <LoginForm onSubmit={this.onSubmit} authError={this.props.authError}/>
+                <LoginForm
+                    onSubmit={this.onSubmit}
+                    loading={this.props.loading}
+                    authError={this.props.authError}
+                />
             </div>
         );
     }
@@ -51,15 +57,15 @@ class LoginViewC extends React.Component<ILoginViewProps, {}> {
 
 function mapStateToProps(store: IStore, ownProps: IOwnProps): IStateProps {
     return {
-        authenticated: true,
-        authError: store.auth.authError
+        authError: store.auth.authError,
+        loading: store.auth.loading
     };
 }
 
 function mapActionsToProps(dispatch: IDispatch<IStore>): IActionProps {
     return bindActionCreators({
         loginUser,
-        clearAuthError
+        resetAuthForm
     }, dispatch);
 }
 

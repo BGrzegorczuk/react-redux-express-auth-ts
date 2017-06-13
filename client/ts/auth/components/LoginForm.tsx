@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {FormErrors, FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
-import {Alert, Button, Form} from 'react-bootstrap';
+import {Alert, Button, Form, Panel} from 'react-bootstrap';
 import Input from '../../common/forms/fields/Input';
 import * as validators from '../../common/forms/validators';
 
@@ -15,6 +15,7 @@ interface IFormProps extends FormProps<IFormData, {}, {}> {}
 interface ILoginFormProps extends IFormProps {
     onSubmit?: (data: IFormData) => void;
     authError: string | null;
+    loading: boolean;
 }
 
 
@@ -35,26 +36,34 @@ function validate(formData: IFormData): FormErrors<IFormData> {
 })
 class LoginForm extends React.Component<ILoginFormProps, {}> {
 
-    private renderAuthError(msg: string): JSX.Element {
-        return <Alert>{msg}</Alert>;
-    }
-
     private submit: ISubmitHandler<IFormData, ILoginFormProps, {}> = (formData: IFormData): void => {
         this.props.onSubmit && this.props.onSubmit(formData);
     };
 
+    private renderAuthError(error: string): JSX.Element {
+        return <Alert>{error}</Alert>;
+    }
+
     public render(): JSX.Element {
-        const { handleSubmit, authError } = this.props;
+        const { handleSubmit, authError, loading } = this.props;
+
         return (
-            <Form horizontal onSubmit={ handleSubmit && handleSubmit(this.submit) }>
-                { authError ? this.renderAuthError(authError) : null }
+            <Panel header="Login">
+                <Form onSubmit={ handleSubmit && handleSubmit(this.submit) }>
+                    { authError ? this.renderAuthError(authError) : null }
 
-                <Input name="email" label="Email"/>
-                <Input name="password" label="Password" type="password"/>
-                <Button bsStyle="primary" bsSize="lg" type="submit">Submit</Button>
-            </Form>
-        )
+                    <Input name="email" label="Email" disabled={loading}/>
+                    <Input name="password" label="Password" type="password" disabled={loading}/>
 
+                    <Button
+                        bsStyle="primary" bsSize="lg" type="submit"
+                        disabled={loading}
+                    >
+                        Submit
+                    </Button>
+                </Form>
+            </Panel>
+        );
     }
 }
 

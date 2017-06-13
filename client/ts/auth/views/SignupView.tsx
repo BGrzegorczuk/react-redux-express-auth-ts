@@ -2,7 +2,7 @@ import * as React from 'react';
 import {bindActionCreators, Dispatch as IDispatch} from 'redux';
 import {connect} from 'react-redux';
 import {RouteComponentProps as IRouteComponentProps} from 'react-router-dom';
-import {clearAuthError, signupUser} from '../actions/auth';
+import {resetAuthForm, signupUser} from '../actions/auth';
 import SignupForm, {IFormData} from '../components/SignupForm';
 import {IStore} from '../../reducer';
 import {IAuthSignupCreds} from '../interfaces/auth';
@@ -10,11 +10,12 @@ import {IAuthSignupCreds} from '../interfaces/auth';
 
 interface IStateProps {
     authError: string | null;
+    loading: boolean;
 }
 
 interface IActionProps {
     signupUser: typeof signupUser;
-    clearAuthError: typeof clearAuthError;
+    resetAuthForm: typeof resetAuthForm;
 }
 
 interface IOwnProps {}
@@ -23,11 +24,12 @@ interface ISignupViewProps extends IStateProps, IActionProps, IOwnProps, IRouteC
     dispatch: IDispatch<IStore>;
 }
 
-
+// NOTE: logic is very similar to LoginView, I think but it's better to
+// keep them separated as business logic can differ in near future
 class SignupViewC extends React.Component<ISignupViewProps, {}> {
 
     public componentWillUnmount(): void {
-        this.props.clearAuthError();
+        this.props.resetAuthForm();
     }
 
     private onSubmit = (formData: IFormData): void => {
@@ -41,7 +43,11 @@ class SignupViewC extends React.Component<ISignupViewProps, {}> {
     public render(): JSX.Element {
         return (
             <div className="auth-form-holder p-xl pt-xxxl">
-                <SignupForm onSubmit={this.onSubmit} authError={this.props.authError}/>
+                <SignupForm
+                    onSubmit={this.onSubmit}
+                    loading={this.props.loading}
+                    authError={this.props.authError}
+                />
             </div>
         );
     }
@@ -49,14 +55,15 @@ class SignupViewC extends React.Component<ISignupViewProps, {}> {
 
 function mapStateToProps(store: IStore, ownProps: IOwnProps): IStateProps {
     return {
-        authError: store.auth.authError
+        authError: store.auth.authError,
+        loading: store.auth.loading
     };
 }
 
 function mapActionsToProps(dispatch: IDispatch<IStore>): IActionProps {
     return bindActionCreators({
         signupUser,
-        clearAuthError
+        resetAuthForm
     }, dispatch);
 }
 

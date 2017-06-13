@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {FormErrors, FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
-import {Alert, Button, Form} from 'react-bootstrap';
+import {Alert, Button, Form, Panel} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import Input from '../../common/forms/fields/Input';
 import * as validators from '../../common/forms/validators';
@@ -16,6 +16,7 @@ interface IFormProps extends FormProps<IFormData, {}, {}> {}
 
 interface ISignupFormProps extends IFormProps {
     onSubmit?: (data: IFormData) => void;
+    loading: boolean;
     authError: string | null;
 }
 
@@ -37,25 +38,33 @@ function validate(formData: IFormData): FormErrors<IFormData> {
 })
 class SignupFormC extends React.Component<ISignupFormProps, {}> {
 
-    private renderAuthError(): JSX.Element {
-        return <Alert>Signup Failed, try again.</Alert>;
-    }
-
     private submit: ISubmitHandler<IFormData, ISignupFormProps, {}> = (formData: IFormData): void => {
         this.props.onSubmit && this.props.onSubmit(formData);
     };
 
-    public render(): JSX.Element {
-        const { handleSubmit, authError } = this.props;
-        return (
-            <Form horizontal onSubmit={ handleSubmit && handleSubmit(this.submit) }>
-                { authError ? this.renderAuthError() : null }
+    private renderAuthError(error: string): JSX.Element {
+        return <Alert>{error}</Alert>;
+    }
 
-                <Input name="email" label="Email"/>
-                <Input name="password" label="Password" type="password"/>
-                <Input name="passwordConfirm" label="Confirm password" type="password"/>
-                <Button bsStyle="primary" bsSize="lg" type="submit">Submit</Button>
-            </Form>
+    public render(): JSX.Element {
+        const { handleSubmit, authError, loading } = this.props;
+        return (
+            <Panel header="Signup">
+                <Form onSubmit={ handleSubmit && handleSubmit(this.submit) }>
+                    { authError ? this.renderAuthError(authError) : null }
+
+                    <Input name="email" label="Email" disabled={loading}/>
+                    <Input name="password" label="Password" type="password" disabled={loading}/>
+                    <Input name="passwordConfirm" label="Confirm password" type="password" disabled={loading}/>
+
+                    <Button
+                        bsStyle="primary" bsSize="lg" type="submit"
+                        disabled={loading}
+                    >
+                        Submit
+                    </Button>
+                </Form>
+            </Panel>
         )
     }
 }

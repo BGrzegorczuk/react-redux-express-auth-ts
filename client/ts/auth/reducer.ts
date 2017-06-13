@@ -1,16 +1,18 @@
 import {IAction} from '../common/interfaces/action';
 import {AUTH_TOKEN_LS_KEY} from '../consts/auth';
-import {AUTHENTICATE_USER, CLEAR_AUTH_ERROR, SHOW_AUTH_ERROR} from './actions/auth';
+import {AUTHENTICATE_USER, authFormSubmitActionTypes, RESET_AUTH_FORM} from './actions/auth';
 
 
 export interface IAuthStore {
     authenticated: boolean;
     authError: string | null;
+    loading: boolean;
 }
 
 const initialState = {
     authenticated: !!localStorage.getItem(AUTH_TOKEN_LS_KEY),
-    authError: null
+    authError: null,
+    loading: false
 };
 
 
@@ -18,10 +20,15 @@ const authReducer  = (state: IAuthStore = initialState, action: IAction): IAuthS
     switch (action.type) {
         case AUTHENTICATE_USER:
             return { ...state, authenticated: true };
-        case SHOW_AUTH_ERROR:
-            return { ...state, authError: action.payload };
-        case CLEAR_AUTH_ERROR:
-            return { ...state, authError: null };
+        case RESET_AUTH_FORM:
+            return { ...state, authError: null, loading: false };
+
+        case authFormSubmitActionTypes.start:
+            return { ...state, loading: true };
+        case authFormSubmitActionTypes.success:
+            return { ...state, loading: false, authError: null };
+        case authFormSubmitActionTypes.error:
+            return { ...state, loading: false, authError: action.payload };
 
         default:
             return state;
