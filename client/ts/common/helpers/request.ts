@@ -43,7 +43,7 @@ export function request(method: RequestMethod , url: string, data?: IDictionary<
                 case 204:
                     return {};
                 case 401:
-                    throw new Error401("response string", "asdasdasdasdas");
+                    throw new Error401("response string", "Forbidden");
                 default:
                     throw new UnrecognizedStatusError("");
             }
