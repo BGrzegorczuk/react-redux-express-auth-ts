@@ -4,19 +4,25 @@ import {connect, Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 import LoggedInAppContainer from './LoggedInAppContainer';
 import LoggedOutAppContainer from './LoggedOutAppContainers';
+import {IStore} from '../reducer';
 
 
-interface IStateProps {}
+interface IStateProps {
+    isUserAuthorized: boolean;
+}
 
 interface IActionProps {}
 
-export interface IAppProps extends IStateProps, IActionProps {
+interface IOwnProps {
     store: IReduxStore<any>;
 }
 
-class App extends React.Component<IAppProps, {}> {
+export interface IAppProps extends IStateProps, IActionProps, IOwnProps {}
+
+class AppC extends React.Component<IAppProps, {}> {
+
     private renderContent(): JSX.Element {
-        const isUserAuthorized = false;
+        const { isUserAuthorized } = this.props;
         return isUserAuthorized ? <LoggedInAppContainer/> : <LoggedOutAppContainer/>
     }
 
@@ -25,7 +31,7 @@ class App extends React.Component<IAppProps, {}> {
             <Provider store={this.props.store}>
                 <Router>
                     <main className="app">
-                        {this.renderContent()}
+                        { this.renderContent() }
                     </main>
                 </Router>
             </Provider>
@@ -34,4 +40,12 @@ class App extends React.Component<IAppProps, {}> {
 }
 
 
-export default connect(undefined, {})(App);
+function mapStateToProps(store: IStore, ownProps: IOwnProps): IStateProps {
+    return {
+        isUserAuthorized: store.auth.authenticated
+    };
+}
+
+const App = connect(mapStateToProps, {})(AppC);
+
+export default App;
