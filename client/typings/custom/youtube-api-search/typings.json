@@ -1,0 +1,9 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/andrew-w-ross/typings-youtube-api-search/master/typings.json",
+    "raw": "github:andrew-w-ross/typings-youtube-api-search",
+    "main": "youtube-api-search.d.ts",
+    "name": "youtube-api-search"
+  }
+}
