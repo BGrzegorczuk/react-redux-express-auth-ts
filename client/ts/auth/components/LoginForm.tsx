@@ -55,12 +55,14 @@ class LoginForm extends React.Component<ILoginFormProps, {}> {
                     <Input name="email" label="Email" disabled={loading}/>
                     <Input name="password" label="Password" type="password" disabled={loading}/>
 
-                    <Button
-                        bsStyle="primary" bsSize="lg" type="submit"
-                        disabled={loading}
-                    >
-                        Submit
-                    </Button>
+                    <div className="tac">
+                        <Button
+                            bsStyle="primary" bsSize="lg" type="submit"
+                            disabled={loading}
+                        >
+                            Submit
+                        </Button>
+                    </div>
                 </Form>
             </Panel>
         );

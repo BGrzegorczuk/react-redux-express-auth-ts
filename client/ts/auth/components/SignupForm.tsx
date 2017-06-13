@@ -57,12 +57,14 @@ class SignupFormC extends React.Component<ISignupFormProps, {}> {
                     <Input name="password" label="Password" type="password" disabled={loading}/>
                     <Input name="passwordConfirm" label="Confirm password" type="password" disabled={loading}/>
 
-                    <Button
-                        bsStyle="primary" bsSize="lg" type="submit"
-                        disabled={loading}
-                    >
-                        Submit
-                    </Button>
+                    <div className="tac">
+                        <Button
+                            bsStyle="primary" bsSize="lg" type="submit"
+                            disabled={loading}
+                        >
+                            Submit
+                        </Button>
+                    </div>
                 </Form>
             </Panel>
         )
