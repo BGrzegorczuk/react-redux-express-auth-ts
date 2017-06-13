@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Field, FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
+import {FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
 import {Alert, Button, Form} from 'react-bootstrap';
+import Input from '../../common/forms/fields/Input';
 
 
 export interface IFormData {
@@ -36,8 +37,8 @@ class LoginForm extends React.Component<ILoginFormProps, {}> {
             <Form horizontal onSubmit={ handleSubmit && handleSubmit(this.submit) }>
                 { authError ? this.renderAuthError(authError) : null }
 
-                <Field name="email" label="Email" component="input"/>
-                <Field name="password" label="Password" type="password" component="input"/>
+                <Input name="email" label="Email"/>
+                <Input name="password" label="Password" type="password"/>
                 <Button bsStyle="primary" bsSize="lg" type="submit">Submit</Button>
             </Form>
         )

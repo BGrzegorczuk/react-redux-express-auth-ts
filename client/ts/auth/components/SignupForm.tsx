@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {Field, FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
+import {FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
 import {Alert, Button, Form} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import Input from '../../common/forms/fields/Input';
 
 
 export interface IFormData {
@@ -37,9 +38,9 @@ class SignupFormC extends React.Component<ISignupFormProps, {}> {
             <Form horizontal onSubmit={ handleSubmit && handleSubmit(this.submit) }>
                 { authError ? this.renderAuthError() : null }
 
-                <Field name="email" label="Email" component="input"/>
-                <Field name="password" label="Password" type="password" component="input"/>
-                <Field name="passwordConfirm" label="Confirm password" type="password" component="input"/>
+                <Input name="email" label="Email"/>
+                <Input name="password" label="Password" type="password"/>
+                <Input name="passwordConfirm" label="Confirm password" type="password"/>
                 <Button bsStyle="primary" bsSize="lg" type="submit">Submit</Button>
             </Form>
         )
