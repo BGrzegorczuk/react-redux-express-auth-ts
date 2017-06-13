@@ -43,7 +43,7 @@ class SignupFormC extends React.Component<ISignupFormProps, {}> {
     };
 
     private renderAuthError(error: string): JSX.Element {
-        return <Alert>{error}</Alert>;
+        return <Alert bsStyle="warning">{error}</Alert>;
     }
 
     public render(): JSX.Element {
