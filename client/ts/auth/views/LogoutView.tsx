@@ -18,7 +18,7 @@ interface ILogoutViewProps extends IStateProps, IActionProps, IOwnProps, IRouteC
 
 class LogOutViewC extends React.Component<ILogoutViewProps, IStateProps> {
 
-    public componentDidMount(): void {
+    public componentWillUnmount(): void {
         this.props.logoutUser();
     }
 
