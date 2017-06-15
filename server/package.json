@@ -36,7 +36,7 @@
     "@types/helmet": "0.0.35",
     "@types/jwt-simple": "^0.5.33",
     "@types/mongoose": "^4.7.17",
-    "@types/node": "^7.0.29",
+    "@types/node": "^7.0.31",
     "@types/passport": "^0.3.3",
     "@types/passport-jwt": "^2.0.20",
     "@types/passport-local": "^1.0.30",
