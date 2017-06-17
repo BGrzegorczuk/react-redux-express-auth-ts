@@ -1,15 +1,17 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+v2.0 | 20110126
+License: none (public domain)
 */
-
 @import "partials/loader";
 
 /* box-sizing */
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -22,47 +24,69 @@ html {
 //   vertical-align: baseline; }
 
 html {
-    height: 100%;
-    font-size: 62.5%; // to use REM
+  height: 100%;
+  font-size: 62.5%; // to use REM
 }
 
 body {
-    min-height: 100%;
-    font-size: 1.4rem; // 1rem = 10px
-    overflow: hidden;
+  min-height: 100%;
+  font-size: 1.4rem; // 1rem = 10px
+  overflow: hidden;
 }
 
-html, body {
-    height: 100vh;
-    width: 100vw;
+html,
+body {
+  height: 100vh;
+  width: 100vw;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
 
 body {
   line-height: 1;
 }
 
-ol, ul {
-  list-style: none; }
+ol,
+ul {
+  list-style: none;
+}
 
-blockquote, q {
-  quotes: none; }
+blockquote,
+q {
+  quotes: none;
+}
 
 blockquote {
-  &:before, &:after {
+  &::before,
+  &::after {
     content: '';
-    content: none; } }
+    content: none;
+  }
+}
 
 q {
-  &:before, &:after {
+  &::before,
+  &::after {
     content: '';
-    content: none; } }
+    content: none;
+  }
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}

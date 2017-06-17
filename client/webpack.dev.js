@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const commonWebpackConfig = require('./webpack.common');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 
 module.exports = merge(commonWebpackConfig, {
@@ -12,7 +13,8 @@ module.exports = merge(commonWebpackConfig, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
-        new ExtractTextPlugin('base.css')
+        new ExtractTextPlugin('base.css'),
+        new StyleLintPlugin({ syntax: 'scss', failOnError: false })
     ],
     devtool: 'inline-source-map',
     devServer: {
