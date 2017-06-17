@@ -30,6 +30,7 @@ Client side uses following technologies/packages:
 * [redux-thunk](https://github.com/gaearon/redux-thunk)- allowing to write asynchronous action creators
 * [Webpack v2](https://webpack.js.org/)- for bundling (with [asset-management](https://webpack.js.org/guides/asset-management/), ["Tree-Shaking"](https://webpack.js.org/guides/tree-shaking/), [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/), [caching](https://webpack.js.org/guides/caching/) and [code-splitting](https://webpack.js.org/guides/code-splitting/]))
 * [Sass](http://sass-lang.com/)- "css with superpowers"
+* [Stylelint](https://stylelint.io/) - style linter
 
 Server side uses following technologies/packages:
 * [node v8](https://github.com/nodejs/node)
