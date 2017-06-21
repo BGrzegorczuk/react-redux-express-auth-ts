@@ -1,3 +1,5 @@
+'use strict';
+
 import {ISearchArgs} from './yt_api_types';
 const ROOT_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 export const APIKey = "AIzaSyAFXU0ZOBUe9slg1yCtJFSWP-oXJweY5CY";     // should not be public ;)

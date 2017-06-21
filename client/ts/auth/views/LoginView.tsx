@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {RouteComponentProps as IRouteComponentProps} from 'react-router-dom';
 import {IAuthLoginCreds} from '../interfaces/auth';

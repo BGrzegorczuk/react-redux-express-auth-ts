@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {Store as IReduxStore} from 'redux';
 import {connect, Provider} from 'react-redux';

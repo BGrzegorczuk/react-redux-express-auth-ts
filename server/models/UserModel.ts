@@ -1,3 +1,5 @@
+'use strict';
+
 import {compare, genSalt, hash} from 'bcryptjs';
 import {Document, DocumentQuery, Model, model, Schema} from 'mongoose';
 
@@ -18,7 +20,7 @@ export const userSchema: Schema = new Schema({
     createdAt: {
         type: Date,
         required: true,
-        default: Date.now
+        "default": Date.now
     },
     name: String,
     email: {

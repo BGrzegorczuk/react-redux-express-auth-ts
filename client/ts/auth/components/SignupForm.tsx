@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {FormErrors, FormProps, reduxForm, SubmitHandler as ISubmitHandler} from 'redux-form';
 import {Alert, Button, Form, Panel} from 'react-bootstrap';

@@ -1,3 +1,5 @@
+'use strict';
+
 import {IAction} from '../common/interfaces/action';
 import {AUTH_TOKEN_LS_KEY} from '../consts/auth';
 import {AUTHENTICATE_USER, authFormSubmitActionTypes, RESET_AUTH_FORM, UNAUTHENTICATE_USER} from './actions/auth';

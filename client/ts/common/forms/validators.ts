@@ -1,3 +1,5 @@
+'use strict';
+
 export const required = (value: any, msg: string = 'Field is required') => {
     return !value ? msg : '';
 };

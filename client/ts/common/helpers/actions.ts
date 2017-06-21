@@ -1,3 +1,5 @@
+'use strict';
+
 export interface RequestActionTypes {
     start: string;
     success: string;

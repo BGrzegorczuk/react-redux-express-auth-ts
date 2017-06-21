@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import SearchInput from './SearchInput';
 
@@ -24,10 +26,9 @@ class SearchBar extends React.Component<ISearchBarProps, ISearchBarState> {
     private onInputChange = (e: React.FormEvent<any>) => {
         const target = (e as any).target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
         this.setState({ input: value });
         this.props.onVideoSearch(value);
-    }
+    };
 
     public render(): JSX.Element {
         return (

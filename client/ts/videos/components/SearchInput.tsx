@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {FormControl, FormGroup, HelpBlock} from 'react-bootstrap';
 

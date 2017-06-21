@@ -1,3 +1,5 @@
+'use strict';
+
 import * as passport from 'passport';
 import User, {IUserModel} from '../models/UserModel';
 import {JWT_SECRET} from '../config';

@@ -1,3 +1,5 @@
+'use strict';
+
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
 import {Error401, UnrecognizedStatusError} from './request_errors';
@@ -52,26 +54,26 @@ export function request(method: RequestMethod , url: string, data?: IDictionary<
     //     if (DEBUG) { console.info("FETCH ERROR:", err); }
     //     throw err;
     // });
-};
+}
 
 export function apiGET(url: string, params?: any) {
     const queryParams = '';
     const urlWithParams = `${url}?${queryParams}`;
     return request('GET', urlWithParams);
-};
+}
 
 export function apiPOST (url: string, data?: IDictionary<any>, opts?: RequestOptions): Promise<any> {
     return request('POST', url, data);
-};
+}
 
 export function apiPUT (url: string, data?: IDictionary<any>, opts?: RequestOptions): Promise<any> {
     return request('PUT', url, data, opts);
-};
+}
 
 export function apiPATCH (url: string, data?: IDictionary<any>, opts?: RequestOptions): Promise<any> {
     return request('PATCH', url, data, opts);
-};
+}
 
 export function apiDELETE (url: string): Promise<any> {
     return request('DELETE', url);
-};
+}

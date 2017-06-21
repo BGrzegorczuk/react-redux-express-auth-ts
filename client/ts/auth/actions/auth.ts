@@ -1,3 +1,5 @@
+'use strict';
+
 import {Dispatch as IDispatch} from 'redux';
 import {IAction} from '../../common/interfaces/action';
 import {IAuthLoginCreds, IAuthResponse, IAuthSignupCreds} from '../interfaces/auth';

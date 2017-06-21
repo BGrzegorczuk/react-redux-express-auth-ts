@@ -1,6 +1,7 @@
+'use strict';
+
 import * as React from 'react';
 import {debounce} from 'lodash';
-import * as YTSearch from 'youtube-api-search';
 import {Col, Grid, Row} from 'react-bootstrap';
 import {RouteComponentProps as IRouteComponentProps} from 'react-router-dom';
 import VideoDetails from '../components/VideoDetail';
@@ -8,13 +9,14 @@ import VideoList from '../components/VideoList';
 import {Loader} from '../../common/components/Loader';
 import SearchBar from '../components/SearchBar';
 import ytAPI, {APIKey} from '../utils/yt_api_search';
+import {IVideoItem} from '../utils/yt_api_types';
 
 
 interface IVideoListViewProps extends IRouteComponentProps<any> {}
 
 interface IVideoListViewState {
-    videos: YTSearch.IVideoItem[];
-    selectedVideo: YTSearch.IVideoItem | null;
+    videos: IVideoItem[];
+    selectedVideo: IVideoItem | null;
 }
 
 
@@ -50,11 +52,11 @@ class VideoListView extends React.Component<IVideoListViewProps, IVideoListViewS
             .then((res: Response) => res.json());
     };
 
-    private setSelectedVideo = (video: YTSearch.IVideoItem) => {
+    private setSelectedVideo = (video: IVideoItem) => {
         this.setState({ selectedVideo : video });
     };
 
-    private updateVideos = (videos: YTSearch.IVideoItem[]) => {
+    private updateVideos = (videos: IVideoItem[]) => {
         this.setState({ videos });
     };
 
@@ -62,17 +64,15 @@ class VideoListView extends React.Component<IVideoListViewProps, IVideoListViewS
      * Callbacks
      */
 
-    private onVideoSelect = (video: YTSearch.IVideoItem) => {
+    private onVideoSelect = (video: IVideoItem) => {
         this.setSelectedVideo(video);
     };
 
     // TODO: typings for response
     private onVideoSearch = debounce((term: string) => {
-        console.log("term", term);
         this.queryVideos(term)
             .then((res: any) => {
                 const [ currentVideo, ...restVideos ] = res.items;
-                console.log(restVideos);
                 this.updateVideos(restVideos);
             });
     }, 300);

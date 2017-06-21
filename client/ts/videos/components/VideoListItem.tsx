@@ -1,10 +1,12 @@
+'use strict';
+
 import * as React from 'react';
 import {Image, ListGroupItem, Media} from 'react-bootstrap';
-import * as YTSearch from 'youtube-api-search';
+import {IVideoItem} from '../utils/yt_api_types';
 
 interface IVideoItemProps {
-    video: YTSearch.IVideoItem;
-    onClick: (video: YTSearch.IVideoItem) => void;
+    video: IVideoItem;
+    onClick: (video: IVideoItem) => void;
 }
 
 const VideoItem = (props: IVideoItemProps) => {
@@ -27,6 +29,6 @@ const VideoItem = (props: IVideoItemProps) => {
 
         </ListGroupItem>
     );
-}
+};
 
 export default VideoItem;

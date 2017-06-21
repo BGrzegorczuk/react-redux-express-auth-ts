@@ -1,3 +1,5 @@
+'use strict';
+
 export class Error400 extends Error {
     constructor(response: string, message?: string) {
         super();

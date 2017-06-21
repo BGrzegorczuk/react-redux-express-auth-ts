@@ -1,3 +1,5 @@
+'use strict';
+
 import * as express from 'express';
 import * as jwt from 'jwt-simple';
 import User, {IUserModel} from '../models/UserModel';

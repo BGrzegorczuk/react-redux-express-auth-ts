@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {Field, WrappedFieldProps} from 'redux-form';
 import {ControlLabel, FormControl, FormGroup, HelpBlock} from 'react-bootstrap';

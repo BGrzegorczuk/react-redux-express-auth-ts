@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {bindActionCreators, Dispatch as IDispatch} from 'redux';
 import {connect} from 'react-redux';

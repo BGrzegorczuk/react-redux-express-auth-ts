@@ -1,11 +1,12 @@
+'use strict';
+
 import * as React from 'react';
-// import * as cn from "classnames";
-import * as YTSearch from 'youtube-api-search';
 import {ResponsiveEmbed} from 'react-bootstrap';
+import {IVideoItem} from '../utils/yt_api_types';
 
 
 interface IVideoDetailsProps {
-    video: YTSearch.IVideoItem | null;
+    video: IVideoItem | null;
     className?: string;
 }
 
@@ -30,6 +31,6 @@ const VideoDetails = (props: IVideoDetailsProps) => {
             </section>
         </article>
     );
-}
+};
 
 export default VideoDetails;
